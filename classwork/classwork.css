@@ -1,0 +1,21 @@
+.container{
+    display:flex;
+    flex-direction: row;
+    background-color: #fff;
+    padding :10px;
+    border: 1px solid #ccc;
+    /* justify-content : space-evenly  ; */
+}
+.box{
+    background-color:#4CAF50;
+    color: white;
+    padding : 20px;
+    text-align: center;
+    border-radius : 5px;
+    
+}
+.box1{ background-color: blue; }
+.box2{ background-color: magenta; }
+.box3{ background-color: brown; }
+.box4{ background-color: red; }
+.box5{ background-color: purple; }

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attack on Titan — Animated Compendium</title>
+
+<!-- AOT FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+      ROOT COLORS
+========================= */
+:root {
+  --bg: #0d0d11;
+  --card: rgba(20,20,28,0.75);
+  --border: rgba(255,255,255,0.05);
+  --text: #e7e7e7;
+  --muted: #9d9d9d;
+  --accent: #b42525;
+  --accent2: #3f70c9;
+  --radius: 18px;
+}
+
+/* =========================
+      GLOBAL
+========================= */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: url('https://i.imgur.com/H6xgPpe.jpeg') center/cover fixed,
+              radial-gradient(circle at top, #161616, #000);
+  background-blend-mode: overlay;
+  overflow-x: hidden;
+}
+
+/* Mist / Fog Effect */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://i.imgur.com/9d1iQkU.png') repeat;
+  opacity: 0.25;
+  animation: fogMove 35s linear infinite;
+  pointer-events: none;
+}
+@keyframes fogMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-800px); }
+}
+
+/* =========================
+      HEADER
+========================= */
+header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 30px;
+}
+
+/* Pulsing Wings */
+.logo-icon {
+  width: 70px;
+  height: 70px;
+  background: url("https://i.imgur.com/w7kQjMn.png") center/contain no-repeat;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+  animation: wingsPulse 2.4s infinite ease-in-out;
+}
+@keyframes wingsPulse {
+  0%,100% { transform: scale(1); filter: drop-shadow(0 0 10px #ffffff40); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 16px #ffffff90); }
+}
+
+/* Animated Title */
+.logo-text {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 48px;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(255,0,0,0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: titleDrop 1.2s ease forwards;
+}
+@keyframes titleDrop {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brand-sub {
+  margin-top: -6px;
+  color: var(--muted);
+  font-size: 14px;
+  opacity: 0;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+/* =========================
+      LAYOUT
+========================= */
+main {
+  max-width: 1300px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+/* =========================
+      CARD STYLE
+========================= */
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 35px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+      TIMELINE
+========================= */
+.timeline-item {
+  margin-bottom: 15px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideRight 0.6s forwards;
+}
+
+@keyframes slideRight {
+  to { opacity:1; transform:translateX(0); }
+}
+
+/* =========================
+      EPISODES
+========================= */
+.episode {
+  padding: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  transform: translateX(20px);
+  opacity: 0;
+  animation: slideLeft 0.7s forwards;
+}
+@keyframes slideLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+.episode:hover {
+  background: rgba(255,255,255,0.08);
+  transform: scale(1.02);
+}
+
+/* =========================
+      CHARACTER CARDS
+========================= */
+.char {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255,255,255,0.04);
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+/* Hover shake effect */
+.char:hover {
+  background: rgba(255,255,255,0.1);
+  animation: shake 0.25s linear;
+}
+@keyframes shake {
+  0% { transform: translateX(0) }
+  25% { transform: translateX(-2px) }
+  50% { transform: translateX(2px) }
+  75% { transform: translateX(-2px) }
+  100% { transform: translateX(0) }
+}
+
+.char-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, var(--accent2), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 22px;
+  box-shadow: 0 0 10px #000;
+}
+
+/* =========================
+      DETAILS PANEL ("anime cutboard")
+========================= */
+#details {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.07);
+  display: none;
+  animation: cutIn 0.4s ease-out forwards;
+}
+
+@keyframes cutIn {
+  0% { clip-path: inset(0 100% 0 0); opacity:0; }
+  100% { clip-path: inset(0 0 0 0); opacity:1; }
+}
+
+/* =========================
+      FOOTER
+========================= */
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px;
+  font-size: 14px;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-icon"></div>
+
+  <div>
+    <div class="logo-text">Attack on Titan</div>
+    <div class="brand-sub">Animated Fan Compendium</div>
+  </div>
+</header>
+
+<main>
+
+<!-- LEFT SECTION -->
+<section>
+
+  <!-- Overview -->
+  <div class="card">
+    <h2>Overview</h2>
+    <p>
+      <b>Attack on Titan</b> is a dark epic exploring humanity’s desperate struggle
+      against Titans, diving into themes of war, freedom, betrayal, and destiny.
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card" style="margin-top:20px;">
+    <h2>Key Timeline</h2>
+    <div id="timeline"></div>
+  </div>
+
+  <!-- Episodes -->
+  <div class="card" style="margin-top:20px;">
+    <h3>Episodes</h3>
+    <div id="episodes"></div>
+  </div>
+
+</section>
+
+<!-- RIGHT SIDEBAR -->
+<aside>
+
+  <div class="card">
+    <h3>Characters</h3>
+    <div id="charList"></div>
+
+    <div id="details"></div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h3>Glossary</h3>
+    <p><b>ODM Gear:</b> 3D combat equipment enabling high-mobility.</p>
+    <p><b>Titan Shifter:</b> Humans that transform into Titans.</p>
+    <p><b>Survey Corps:</b> Elite scouts outside the Walls.</p>
+  </div>
+
+</aside>
+
+</main>
+
+<footer>
+  Fan project — Not affiliated with Hajime Isayama or Kodansha.
+</footer>
+
+<script>
+/* ----- DATA ----- */
+const CHARACTERS = [
+  { name:"Eren Yeager", role:"Attack Titan", summary:"Driven by rage, freedom, and destiny."},
+  { name:"Mikasa Ackerman", role:"Soldier", summary:"Unmatched combat ability; fiercely loyal."},
+  { name:"Armin Arlert", role:"Colossal Titan / Strategist", summary:"Gentle yet capable of world-changing decisions."}
+];
+
+const EVENTS = [
+  { date:"845", text:"Fall of Shiganshina" },
+  { date:"850", text:"Battle of Trost District" },
+  { date:"851", text:"Return to Shiganshina" }
+];
+
+const EPISODES = [
+  { season:1, ep:1, title:"To You, in 2000 Years" },
+  { season:1, ep:2, title:"The Fall of Shiganshina" }
+];
+
+/* ----- TIMELINE ----- */
+EVENTS.forEach((ev,i)=>{
+  timeline.innerHTML += `
+    <div class="timeline-item" style="animation-delay:${i * 0.15}s">
+      <b>${ev.date}</b> — ${ev.text}
+    </div>`;
+});
+
+/* ----- EPISODES ----- */
+EPISODES.forEach((ep,i)=>{
+  episodes.innerHTML += `
+    <div class="episode" style="animation-delay:${i * 0.15}s">
+      <b>S${ep.season} • Ep ${ep.ep}</b><br>${ep.title}
+    </div>`;
+});
+
+/* ----- CHARACTERS ----- */
+CHARACTERS.forEach(c=>{
+  charList.innerHTML += `
+    <div class="char" onclick="showDetails('${c.name}', '${c.role}', '${c.summary}')">
+      <div class="char-avatar">${c.name[0]}</div>
+      <div style="margin-left:10px">
+        <b>${c.name}</b><br>
+        <span style="color:var(--muted); font-size:14px">${c.role}</span>
+      </div>
+    </div>
+  `;
+});
+
+/* ----- DETAILS PANEL ----- */
+function showDetails(name, role, summary) {
+  details.style.display = "block";
+  details.innerHTML = `
+    <h3>${name}</h3>
+    <p><b>${role}</b></p>
+    <p>${summary}</p>
+  `;
+}
+</script>
+
+</body>
+</html>

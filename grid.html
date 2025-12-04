@@ -7,12 +7,22 @@
     <style>
         .wrapper {
             display: grid;
+            grid-template-columns: 200px 200px 200px;
         }
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
         }
         .wrapper {
-            border: 2px red
+            border: 2px solid red;
+            border-radius: 5px;
+            background-color: aliceblue;
+        }
+        .wrapper > div {
+            border: 2px solid palevioletred;
+            border-radius: 5px ;
+            background-color: green;
+            color: burlywood;
+
         }
     </style>
 </head>
@@ -23,5 +33,7 @@
         <div>Three</div>
         <div>Four</div>
         <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
 </body>
 </html>

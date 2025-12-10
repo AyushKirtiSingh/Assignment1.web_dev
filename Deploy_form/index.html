@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Sign-up Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2 class="title">Student Sign-up Form</h2>
+
+<div class="form-container">
+    <form>
+        <label>Full name</label>
+        <input type="text" placeholder="e.g. Ayush Belwal" required>
+
+        <label>Email address</label>
+        <input type="email" placeholder="example@mail.com" required>
+
+        <label>Age</label>
+        <input type="number" placeholder="Your age">
+
+        <label>Create password</label>
+        <input type="password" placeholder="At least 6 characters" minlength="6" required>
+
+        <label>Gender</label>
+        <div class="box">
+            <input type="radio" name="gender"> Female <br>
+            <input type="radio" name="gender"> Male <br>
+            <input type="radio" name="gender"> Other
+        </div>
+
+        <label>Interests (choose all that apply)</label>
+        <div class="box">
+            <input type="checkbox"> Coding <br>
+            <input type="checkbox"> Drawing <br>
+            <input type="checkbox"> Sports
+        </div>
+
+        <label>Class / Grade</label>
+        <select>
+            <option>Select grade</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+        </select>
+
+        <label>Tell us (one line) about yourself</label>
+        <textarea placeholder="I love science..."></textarea>
+
+        <p class="note">Fields marked with * are required.</p>
+
+        <div class="buttons">
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        </div>
+    </form>
+</div>
+
+<p class="footer">Open this file in a browser to fill your details..</p>
+
+</body>
+</html>

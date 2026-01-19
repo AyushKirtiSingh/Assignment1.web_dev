@@ -1,29 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Dashboard</title>
+
   <style>
-    body { font-family: Arial; background: #f1f5f9; }
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 40px;
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
-    .box {
+
+    body {
+      background: #f1f5f9;
+      display: flex;
+      min-height: 100vh;
+      color: #1f2937;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: linear-gradient(180deg, #1e293b, #020617);
+      color: #e5e7eb;
+      padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #cbd5f5;
+      text-decoration: none;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      padding-left: 22px;
+    }
+
+    /* Main Area */
+    .main {
+      flex: 1;
+      padding: 30px 40px;
+    }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .topbar h1 {
+      font-size: 32px;
+    }
+
+    .profile {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #020617;
+    }
+
+    /* Stats Cards */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .card {
       background: white;
       padding: 30px;
-      border-radius: 12px;
-      text-align: center;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    /* Progress Section */
+    .progress-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .progress-card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
+
+    .progress-card h4 {
+      margin-bottom: 12px;
+    }
+
+    .bar {
+      background: #e5e7eb;
+      border-radius: 30px;
+      height: 14px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 30px;
+      animation: load 1.2s ease;
+    }
+
+    .fill.users {
+      width: 70%;
+      background: #22c55e;
+    }
+
+    .fill.sales {
+      width: 50%;
+      background: #38bdf8;
+    }
+
+    .fill.revenue {
+      width: 85%;
+      background: #f59e0b;
+    }
+
+    @keyframes load {
+      from { width: 0; }
     }
   </style>
 </head>
+
 <body>
-  <h2 style="text-align:center;">Dashboard</h2>
-  <div class="dashboard">
-    <div class="box">Users</div>
-    <div class="box">Sales</div>
-    <div class="box">Revenue</div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>MyAdmin</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Users</a>
+    <a href="#">Sales</a>
+    <a href="#">Analytics</a>
+    <a href="#">Settings</a>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <h1>Dashboard</h1>
+      <div class="profile">A</div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>1,250</p>
+      </div>
+
+      <div class="card">
+        <h3>Monthly Sales</h3>
+        <p>$18,400</p>
+      </div>
+
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>$72,600</p>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-section">
+
+      <div class="progress-card">
+        <h4>User Growth</h4>
+        <div class="bar">
+          <div class="fill users"></div>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <h4>Sales Target</h4>
+        <div class="bar">
+          <div class="fill sales"></div>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <h4>Revenue Goal</h4>
+        <div class="bar">
+          <div class="fill revenue"></div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
+
 </body>
 </html>

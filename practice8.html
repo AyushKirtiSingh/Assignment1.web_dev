@@ -1,20 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>FAQ</title>
+
   <style>
-    body { font-family: Arial; background: #f8fafc; padding: 50px; }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f8fafc, #e5e7eb);
+      padding: 60px 20px;
+      color: #1f2937;
+    }
+
+    
+    .header {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+
+    .header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #4b5563;
+      font-size: 18px;
+    }
+
+    
+    .faq-container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    
     .faq {
       background: white;
-      padding: 20px;
-      margin-bottom: 15px;
-      border-radius: 8px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .faq:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.12);
+    }
+
+
+    .faq input {
+      display: none;
+    }
+
+    .faq label {
+      display: block;
+      padding: 22px 60px 22px 25px;
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      position: relative;
+      background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    }
+
+    .faq label::after {
+      content: "+";
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 26px;
+      transition: 0.3s;
+    }
+
+    .faq input:checked + label::after {
+      content: "−";
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 25px;
+      background: #fff;
+    }
+
+    .faq input:checked ~ .faq-content {
+      max-height: 200px;
+      padding: 20px 25px;
+    }
+
+    .faq-content p {
+      line-height: 1.7;
+      color: #4b5563;
+      font-size: 16px;
     }
   </style>
 </head>
+
 <body>
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq"><strong>What is this?</strong><p>A demo FAQ page.</p></div>
-  <div class="faq"><strong>Is it free?</strong><p>Yes.</p></div>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about our service</p>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-container">
+
+    <div class="faq">
+      <input type="checkbox" id="faq1">
+      <label for="faq1">What is this website about?</label>
+      <div class="faq-content">
+        <p>
+          This website is a demo project built using only HTML and CSS
+          to showcase clean design and interactive UI components.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq2">
+      <label for="faq2">Is this project free to use?</label>
+      <div class="faq-content">
+        <p>
+          Yes! You are free to use and customize this project
+          for learning or personal use.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq3">
+      <label for="faq3">Do I need JavaScript?</label>
+      <div class="faq-content">
+        <p>
+          No JavaScript is required.
+          The accordion functionality is achieved using pure CSS.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <input type="checkbox" id="faq4">
+      <label for="faq4">Is this page responsive?</label>
+      <div class="faq-content">
+        <p>
+          Yes, it works smoothly on mobile, tablet,
+          and desktop devices.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>

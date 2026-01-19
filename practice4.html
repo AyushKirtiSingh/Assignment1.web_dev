@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Blog</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Blog Container */
+    article {
+      max-width: 800px;
+      background: white;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    article h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .date {
+      color: gray;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    article p {
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* Buttons */
+    .actions {
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      margin-right: 10px;
+    }
+
+    .like-btn {
+      background: #ff4d4d;
+      color: white;
+    }
+
+    .like-btn:hover {
+      background: #e84141;
+    }
+
+    /* Comments */
+    .comments {
+      margin-top: 40px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .comment-btn {
+      margin-top: 10px;
+      background: #667eea;
+      color: white;
+    }
+
+    .comment-btn:hover {
+      background: #556cd6;
+    }
+
+    footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>My Personal Blog</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Blogs</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Blog Post -->
+  <article>
+    <h1>My First Blog Post</h1>
+    <div class="date">Published on January 19, 2026</div>
+
+    <p>
+      Welcome to my blog! 🎉  
+      This website is built using HTML, CSS, and a bit of JavaScript to make it interactive and beautiful.
+    </p>
+
+    <p>
+      Blogging helps me share knowledge, express creativity, and document my learning journey.
+      Stay tuned for more exciting posts!
+    </p>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="like-btn" onclick="likePost()">❤️ Like (<span id="likeCount">0</span>)</button>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments">
+      <h2>Leave a Comment</h2>
+      <textarea placeholder="Write your comment here..."></textarea><br>
+      <button class="comment-btn">Post Comment</button>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 My Blog | Designed with ❤️
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let likes = 0;
+    function likePost() {
+      likes++;
+      document.getElementById("likeCount").innerText = likes;
+    }
+  </script>
+
+</body>
+</html>

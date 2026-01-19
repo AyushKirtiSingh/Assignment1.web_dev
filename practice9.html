@@ -1,29 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Newsletter</title>
+  <meta charset="UTF-8">
+  <title>Newsletter Subscription</title>
+
   <style>
-    body {
-      background: linear-gradient(135deg,#0ea5e9,#22c55e);
-      font-family: Arial;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
-    input {
-      padding: 10px;
-      width: 250px;
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    }
+
+    /* Card */
+    .newsletter-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 45px 35px;
+      width: 380px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      color: white;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .newsletter-card h1 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-card p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #f0fdf4;
+    }
+
+    /* Input Group */
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 14px;
+      font-size: 15px;
+      border-radius: 10px;
       border: none;
-      border-radius: 5px;
+      outline: none;
+    }
+
+    .input-group input::placeholder {
+      color: #6b7280;
+    }
+
+    .input-group input:focus {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Button */
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      background: white;
+      color: #16a34a;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #dcfce7;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Small Text */
+    .note {
+      font-size: 13px;
+      margin-top: 18px;
+      color: #ecfeff;
     }
   </style>
 </head>
+
 <body>
-  <div>
-    <h1>Subscribe</h1>
-    <input type="email" placeholder="Enter your email">
+
+  <div class="newsletter-card">
+    <h1>Join Our Newsletter</h1>
+    <p>Get weekly updates, tips, and special offers straight to your inbox.</p>
+
+    <form>
+      <div class="input-group">
+        <input type="email" placeholder="Enter your email address" required>
+      </div>
+
+      <button type="submit">Subscribe Now</button>
+    </form>
+
+    <div class="note">
+      No spam. Unsubscribe anytime.
+    </div>
   </div>
+
 </body>
 </html>

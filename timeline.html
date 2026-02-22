@@ -1,46 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Timeline</title>
+<title>Advanced Timeline</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
 body{
-  font-family:Arial;
-  background:#f4f4f4;
+  background:#0f172a;
+  color:white;
+  padding:50px 0;
 }
+
 .timeline{
-  width:80%;
-  margin:50px auto;
-  border-left:4px solid #667eea;
-}
-.event{
-  margin:20px;
-  padding:20px;
-  background:white;
   position:relative;
+  max-width:900px;
+  margin:auto;
 }
-.event::before{
+
+.timeline::after{
   content:"";
-  width:15px;
-  height:15px;
-  background:#667eea;
-  border-radius:50%;
   position:absolute;
-  left:-9px;
-  top:20px;
+  width:4px;
+  background:#00f5a0;
+  top:0;
+  bottom:0;
+  left:50%;
+  margin-left:-2px;
 }
+
+.container{
+  padding:20px 40px;
+  position:relative;
+  width:50%;
+}
+
+.left{
+  left:0;
+}
+
+.right{
+  left:50%;
+}
+
+.content{
+  background:#1e293b;
+  padding:20px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.content:hover{
+  transform:scale(1.05);
+}
+
+.container::before{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  right:-10px;
+  background:#00f5a0;
+  border-radius:50%;
+  top:30px;
+}
+
+.right::before{
+  left:-10px;
+}
+
+@media(max-width:768px){
+  .container{
+    width:100%;
+    left:0 !important;
+  }
+  .timeline::after{
+    left:20px;
+  }
+}
+
 </style>
 </head>
 <body>
 
+<h1 style="text-align:center;margin-bottom:40px;">My Journey</h1>
+
 <div class="timeline">
-  <div class="event">
-    <h3>2024</h3>
-    <p>Started Web Development</p>
+
+  <div class="container left">
+    <div class="content">
+      <h3>2024</h3>
+      <p>Started learning Web Development</p>
+    </div>
   </div>
-  <div class="event">
-    <h3>2025</h3>
-    <p>Built Advanced Projects</p>
+
+  <div class="container right">
+    <div class="content">
+      <h3>2025</h3>
+      <p>Built advanced frontend projects</p>
+    </div>
   </div>
+
+  <div class="container left">
+    <div class="content">
+      <h3>2026</h3>
+      <p>Working as Frontend Developer</p>
+    </div>
+  </div>
+
 </div>
 
 </body>

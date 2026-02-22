@@ -1,84 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Digital Product</title>
+<title>Modern Landing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
 header{
-  background:#333;
-  color:white;
-  padding:20px;
   display:flex;
   justify-content:space-between;
-}
-header a{
+  padding:20px 40px;
+  background:#0f172a;
   color:white;
-  margin:0 10px;
-  text-decoration:none;
 }
+a{color:white;text-decoration:none;margin-left:20px;}
 .hero{
+  height:100vh;
   background:linear-gradient(135deg,#667eea,#764ba2);
   color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:100px 20px;
 }
 button{
-  padding:10px 20px;
+  padding:12px 25px;
   border:none;
+  border-radius:30px;
+  background:white;
+  color:#333;
+  margin-top:20px;
   cursor:pointer;
+  transition:0.3s;
 }
-.features{
-  padding:50px;
-  text-align:center;
-}
-.card{
-  background:#f4f4f4;
-  padding:20px;
-  margin:10px;
-  display:inline-block;
-  width:200px;
-}
-footer{
-  background:#333;
-  color:white;
-  text-align:center;
-  padding:20px;
-}
+button:hover{transform:scale(1.1);}
+section{padding:80px;text-align:center;}
 </style>
 </head>
 <body>
 
 <header>
-  <h2>MyApp</h2>
+  <h2>Brand</h2>
   <div>
-    <a href="#features">Features</a>
-    <a href="#buy">Buy</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Amazing Digital Product</h1>
-  <p>Boost your productivity today</p>
-  <button onclick="buyNow()">Buy Now</button>
+<div class="hero">
+  <h1>Build Modern Websites</h1>
+  <p>Create responsive & interactive experiences</p>
+  <button onclick="scrollToSection()">Get Started</button>
+</div>
+
+<section id="about">
+<h2>About Us</h2>
+<p>We create powerful web applications.</p>
 </section>
 
-<section id="features" class="features">
-  <h2>Features</h2>
-  <div class="card">Fast</div>
-  <div class="card">Secure</div>
-  <div class="card">Easy to Use</div>
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: example@email.com</p>
 </section>
-
-<footer id="buy">
-  <h2>Get Started Today!</h2>
-</footer>
 
 <script>
-function buyNow(){
-  alert("Redirecting to payment page...");
+function scrollToSection(){
+  document.getElementById("about").scrollIntoView({behavior:"smooth"});
 }
 </script>
 

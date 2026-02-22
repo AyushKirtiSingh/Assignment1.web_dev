@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Typing Speed Test</title>
+<style>
+body {
+  font-family: Arial;
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:50px;
+}
+textarea {
+  width:80%;
+  height:100px;
+  margin-top:20px;
+}
+button {
+  padding:10px 20px;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Typing Speed Test</h1>
+<p id="sentence">The quick brown fox jumps over the lazy dog.</p>
+<textarea id="input" placeholder="Start typing here..."></textarea>
+<br>
+<button onclick="startTest()">Start</button>
+<button onclick="endTest()">Finish</button>
+<h2 id="result"></h2>
+
+<script>
+let startTime;
+
+function startTest(){
+  startTime = new Date().getTime();
+}
+
+function endTest(){
+  let endTime = new Date().getTime();
+  let totalTime = (endTime - startTime)/1000;
+
+  let typedText = document.getElementById("input").value;
+  let wordCount = typedText.split(" ").length;
+  let speed = Math.round((wordCount/totalTime)*60);
+
+  document.getElementById("result").innerText =
+    "Your speed: " + speed + " WPM";
+}
+</script>
+
+</body>
+</html>

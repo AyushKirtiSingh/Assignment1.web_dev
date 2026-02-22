@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Expense Tracker</title>
+<title>Advanced Expense Tracker</title>
 <style>
 body{
-  font-family:Arial;
-  background:#f4f4f4;
+  font-family:sans-serif;
+  background:#f1f5f9;
   display:flex;
   justify-content:center;
-  padding-top:50px;
+  padding-top:40px;
 }
 .container{
   background:white;
-  padding:30px;
   width:400px;
+  padding:20px;
   border-radius:10px;
-}
-input,button{
-  padding:8px;
-  margin-top:10px;
 }
 li{
   display:flex;
   justify-content:space-between;
-  margin-top:10px;
+  margin:8px 0;
 }
+.income{color:green;}
+.expense{color:red;}
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Expense Tracker</h2>
-  <h3>Balance: ₹<span id="balance">0</span></h3>
+<h2>Expense Tracker</h2>
+<h3>Balance: ₹<span id="balance">0</span></h3>
+<p>Income: ₹<span id="income">0</span></p>
+<p>Expense: ₹<span id="expense">0</span></p>
 
-  <input type="text" id="desc" placeholder="Description">
-  <input type="number" id="amount" placeholder="Amount (+income, -expense)">
-  <button onclick="addTransaction()">Add</button>
+<input id="desc" placeholder="Description">
+<input id="amount" type="number" placeholder="Amount (+/-)">
+<button onclick="addTransaction()">Add</button>
 
-  <ul id="list"></ul>
+<ul id="list"></ul>
 </div>
 
 <script>
-let balance = 0;
+let transactions=JSON.parse(localStorage.getItem("transactions"))||[];
+
+function save(){
+  localStorage.setItem("transactions",JSON.stringify(transactions));
+}
+
+function render(){
+  let balance=0,income=0,expense=0;
+  const list=document.getElementById("list");
+  list.innerHTML="";
+
+  transactions.forEach((t,i)=>{
+    balance+=t.amount;
+    if(t.amount>0) income+=t.amount;
+    else expense+=Math.abs(t.amount);
+
+    let li=document.createElement("li");
+    li.innerHTML=`${t.desc} 
+    <span class="${t.amount>0?'income':'expense'}">
+    ₹${t.amount}</span>
+    <button onclick="remove(${i})">X</button>`;
+    list.appendChild(li);
+  });
+
+  document.getElementById("balance").innerText=balance;
+  document.getElementById("income").innerText=income;
+  document.getElementById("expense").innerText=expense;
+}
 
 function addTransaction(){
-  let desc = document.getElementById("desc").value;
-  let amount = Number(document.getElementById("amount").value);
-
-  if(desc==="" || amount==="") return;
-
-  balance += amount;
-  document.getElementById("balance").innerText = balance;
-
-  let li = document.createElement("li");
-  li.innerHTML = desc + " : ₹" + amount +
-   " <button onclick='remove(this,"+amount+")'>X</button>";
-
-  document.getElementById("list").appendChild(li);
-
-  document.getElementById("desc").value="";
-  document.getElementById("amount").value="";
+  let desc=document.getElementById("desc").value;
+  let amount=Number(document.getElementById("amount").value);
+  if(desc==="") return;
+  transactions.push({desc,amount});
+  save(); render();
 }
 
-function remove(btn,amount){
-  balance -= amount;
-  document.getElementById("balance").innerText = balance;
-  btn.parentElement.remove();
+function remove(i){
+  transactions.splice(i,1);
+  save(); render();
 }
+
+render();
 </script>
-
 </body>
 </html>

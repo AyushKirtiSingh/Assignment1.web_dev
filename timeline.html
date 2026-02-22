@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Timeline</title>
+<style>
+body{
+  font-family:Arial;
+  background:#f4f4f4;
+}
+.timeline{
+  width:80%;
+  margin:50px auto;
+  border-left:4px solid #667eea;
+}
+.event{
+  margin:20px;
+  padding:20px;
+  background:white;
+  position:relative;
+}
+.event::before{
+  content:"";
+  width:15px;
+  height:15px;
+  background:#667eea;
+  border-radius:50%;
+  position:absolute;
+  left:-9px;
+  top:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="timeline">
+  <div class="event">
+    <h3>2024</h3>
+    <p>Started Web Development</p>
+  </div>
+  <div class="event">
+    <h3>2025</h3>
+    <p>Built Advanced Projects</p>
+  </div>
+</div>
+
+</body>
+</html>

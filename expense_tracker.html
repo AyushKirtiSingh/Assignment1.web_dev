@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Expense Tracker</title>
+<style>
+body{
+  font-family:Arial;
+  background:#f4f4f4;
+  display:flex;
+  justify-content:center;
+  padding-top:50px;
+}
+.container{
+  background:white;
+  padding:30px;
+  width:400px;
+  border-radius:10px;
+}
+input,button{
+  padding:8px;
+  margin-top:10px;
+}
+li{
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Expense Tracker</h2>
+  <h3>Balance: ₹<span id="balance">0</span></h3>
+
+  <input type="text" id="desc" placeholder="Description">
+  <input type="number" id="amount" placeholder="Amount (+income, -expense)">
+  <button onclick="addTransaction()">Add</button>
+
+  <ul id="list"></ul>
+</div>
+
+<script>
+let balance = 0;
+
+function addTransaction(){
+  let desc = document.getElementById("desc").value;
+  let amount = Number(document.getElementById("amount").value);
+
+  if(desc==="" || amount==="") return;
+
+  balance += amount;
+  document.getElementById("balance").innerText = balance;
+
+  let li = document.createElement("li");
+  li.innerHTML = desc + " : ₹" + amount +
+   " <button onclick='remove(this,"+amount+")'>X</button>";
+
+  document.getElementById("list").appendChild(li);
+
+  document.getElementById("desc").value="";
+  document.getElementById("amount").value="";
+}
+
+function remove(btn,amount){
+  balance -= amount;
+  document.getElementById("balance").innerText = balance;
+  btn.parentElement.remove();
+}
+</script>
+
+</body>
+</html>

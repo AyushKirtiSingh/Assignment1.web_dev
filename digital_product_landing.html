@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Product</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+}
+header{
+  background:#333;
+  color:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+}
+header a{
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+}
+.hero{
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  text-align:center;
+  padding:100px 20px;
+}
+button{
+  padding:10px 20px;
+  border:none;
+  cursor:pointer;
+}
+.features{
+  padding:50px;
+  text-align:center;
+}
+.card{
+  background:#f4f4f4;
+  padding:20px;
+  margin:10px;
+  display:inline-block;
+  width:200px;
+}
+footer{
+  background:#333;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>MyApp</h2>
+  <div>
+    <a href="#features">Features</a>
+    <a href="#buy">Buy</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Amazing Digital Product</h1>
+  <p>Boost your productivity today</p>
+  <button onclick="buyNow()">Buy Now</button>
+</section>
+
+<section id="features" class="features">
+  <h2>Features</h2>
+  <div class="card">Fast</div>
+  <div class="card">Secure</div>
+  <div class="card">Easy to Use</div>
+</section>
+
+<footer id="buy">
+  <h2>Get Started Today!</h2>
+</footer>
+
+<script>
+function buyNow(){
+  alert("Redirecting to payment page...");
+}
+</script>
+
+</body>
+</html>

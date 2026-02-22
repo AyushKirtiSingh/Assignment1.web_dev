@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced 3D Product Card</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f0f1b;
+}
+
+.card{
+  width:320px;
+  background:#1c1c2e;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  color:white;
+  transition:0.5s;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  position:relative;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:20px;
+  background:linear-gradient(45deg,#00f5a0,#00d9f5,#ff00c8);
+  z-index:-1;
+  filter:blur(15px);
+  opacity:0;
+  transition:0.5s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform:rotateY(10deg) rotateX(10deg) scale(1.05);
+}
+
+img{
+  width:200px;
+  margin-bottom:20px;
+}
+
+.price{
+  font-size:22px;
+  margin:15px 0;
+  color:#00f5a0;
+}
+
+button{
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#00f5a0,#00d9f5);
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+  <img src="https://via.placeholder.com/200">
+  <h2>Smart Headphones</h2>
+  <p>Experience next level sound quality</p>
+  <div class="price">$199</div>
+  <button>Buy Now</button>
+</div>
+
+</body>
+</html>

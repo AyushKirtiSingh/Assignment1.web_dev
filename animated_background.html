@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Animated Gradient</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:40px;
+  background:linear-gradient(-45deg,#ff6b6b,#6a11cb,#2575fc,#ff6a00);
+  background-size:400% 400%;
+  animation:gradient 8s infinite;
+}
+@keyframes gradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+</style>
+</head>
+<body>
+Animated Website
+</body>
+</html>

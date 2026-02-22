@@ -1,37 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Glass Profile</title>
+<title>Glass Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(135deg,#667eea,#764ba2);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
 }
-.card{
-  width:300px;
-  padding:30px;
-  text-align:center;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.2);
-  border-radius:20px;
+
+body{
+  min-height:100vh;
+  background:linear-gradient(-45deg,#667eea,#764ba2,#ff6a00,#00c6ff);
+  background-size:400% 400%;
+  animation:gradient 10s ease infinite;
   color:white;
 }
-img{
-  width:100px;
+
+@keyframes gradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 50px;
+  backdrop-filter:blur(15px);
+  background:rgba(255,255,255,0.1);
+}
+
+nav h2{
+  letter-spacing:1px;
+}
+
+nav div{
+  font-size:14px;
+  cursor:pointer;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero img{
+  width:140px;
+  height:140px;
   border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,0.6);
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+.cards{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+  padding:50px 20px;
+}
+
+.card{
+  width:260px;
+  padding:30px 20px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  background:rgba(255,255,255,0.1);
+  text-align:center;
+  transition:0.4s;
+}
+
+.card img{
+  width:70px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  opacity:0.85;
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.03);
+  background:rgba(255,255,255,0.2);
+}
+
+@media(max-width:768px){
+  .cards{
+    flex-direction:column;
+    align-items:center;
+  }
+  nav{
+    padding:20px;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<div class="card">
-  <img src="gojo.webp">
-  <h2>John Doe</h2>
-  <p>UI Designer</p>
-</div>
+<nav>
+  <h2>MyPortfolio</h2>
+  <div>Home | Projects | Contact</div>
+</nav>
+
+<section class="hero">
+  <img src="gojo.webp" alt="Profile Image">
+  <h1>Creative Developer</h1>
+  <p>Building modern, beautiful websites</p>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png">
+    <h3>Web Design</h3>
+    <p>Modern UI/UX design solutions for brands.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1006/1006633.png">
+    <h3>Frontend Dev</h3>
+    <p>Responsive and interactive website development.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <h3>Branding</h3>
+    <p>Professional identity and digital presence building.</p>
+  </div>
+</section>
 
 </body>
 </html>

@@ -1,61 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>To Do App</title>
+<title>Advanced ToDo App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {
-  font-family: Arial;
-  background: linear-gradient(135deg,#667eea,#764ba2);
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{
+  background:linear-gradient(135deg,#667eea,#764ba2);
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
 }
-.container {
+.container{
   background:white;
-  padding:30px;
+  width:400px;
+  padding:25px;
   border-radius:15px;
-  width:350px;
 }
-input {
+h2{text-align:center;margin-bottom:15px;}
+input{
   width:70%;
   padding:8px;
 }
-button {
-  padding:8px;
+button{
+  padding:8px 12px;
   cursor:pointer;
+  border:none;
+  background:#667eea;
+  color:white;
+  border-radius:5px;
 }
-li {
+ul{list-style:none;margin-top:15px;}
+li{
+  padding:8px;
+  display:flex;
+  justify-content:space-between;
+  background:#f4f4f4;
+  margin-top:8px;
+  border-radius:5px;
+}
+.completed{text-decoration:line-through;opacity:0.6;}
+.filters{
   margin-top:10px;
-  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>To Do List</h2>
-  <input type="text" id="taskInput" placeholder="Enter task">
-  <button onclick="addTask()">Add</button>
-  <ul id="taskList"></ul>
+<h2>Advanced ToDo</h2>
+<input id="taskInput" placeholder="New task">
+<button onclick="addTask()">Add</button>
+
+<div class="filters">
+<button onclick="filterTasks('all')">All</button>
+<button onclick="filterTasks('active')">Active</button>
+<button onclick="filterTasks('completed')">Done</button>
+</div>
+
+<ul id="list"></ul>
 </div>
 
 <script>
-function addTask() {
-  let input = document.getElementById("taskInput");
-  if(input.value==="") return;
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  let li = document.createElement("li");
-  li.textContent = input.value;
-
-  li.onclick = function() {
-    li.style.textDecoration = "line-through";
-  };
-
-  document.getElementById("taskList").appendChild(li);
-  input.value="";
+function saveTasks(){
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-</script>
 
+function renderTasks(filter="all"){
+  const list = document.getElementById("list");
+  list.innerHTML="";
+
+  tasks.forEach((task,index)=>{
+    if(filter==="active" && task.done) return;
+    if(filter==="completed" && !task.done) return;
+
+    let li=document.createElement("li");
+    li.className=task.done?"completed":"";
+    li.innerHTML=`
+      <span onclick="toggleTask(${index})">${task.text}</span>
+      <button onclick="deleteTask(${index})">X</button>
+    `;
+    list.appendChild(li);
+  });
+}
+
+function addTask(){
+  let input=document.getElementById("taskInput");
+  if(input.value==="") return;
+  tasks.push({text:input.value,done:false});
+  input.value="";
+  saveTasks();
+  renderTasks();
+}
+
+function toggleTask(index){
+  tasks[index].done=!tasks[index].done;
+  saveTasks();
+  renderTasks();
+}
+
+function deleteTask(index){
+  tasks.splice(index,1);
+  saveTasks();
+  renderTasks();
+}
+
+function filterTasks(type){
+  renderTasks(type);
+}
+
+renderTasks();
+</script>
 </body>
 </html>

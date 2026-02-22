@@ -1,55 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Typing Speed Test</title>
+<title>Advanced Typing Test</title>
 <style>
-body {
-  font-family: Arial;
-  background:#222;
+body{
+  background:#1e293b;
   color:white;
   text-align:center;
-  padding:50px;
+  padding:40px;
+  font-family:sans-serif;
 }
-textarea {
+textarea{
   width:80%;
   height:100px;
   margin-top:20px;
 }
-button {
-  padding:10px 20px;
-  margin-top:20px;
-}
+button{padding:10px;margin-top:15px;}
 </style>
 </head>
 <body>
 
 <h1>Typing Speed Test</h1>
-<p id="sentence">The quick brown fox jumps over the lazy dog.</p>
-<textarea id="input" placeholder="Start typing here..."></textarea>
+<p id="text"></p>
+<textarea id="input" disabled></textarea>
 <br>
 <button onclick="startTest()">Start</button>
-<button onclick="endTest()">Finish</button>
 <h2 id="result"></h2>
 
 <script>
-let startTime;
+const sentences=[
+"The quick brown fox jumps over the lazy dog",
+"JavaScript makes websites interactive and powerful",
+"Practice daily to improve typing speed"
+];
+
+let timer=60;
+let interval;
+let currentText="";
 
 function startTest(){
-  startTime = new Date().getTime();
+  currentText=sentences[Math.floor(Math.random()*sentences.length)];
+  document.getElementById("text").innerText=currentText;
+  document.getElementById("input").disabled=false;
+  document.getElementById("input").value="";
+  timer=60;
+
+  interval=setInterval(()=>{
+    timer--;
+    if(timer<=0){
+      clearInterval(interval);
+      finishTest();
+    }
+  },1000);
 }
 
-function endTest(){
-  let endTime = new Date().getTime();
-  let totalTime = (endTime - startTime)/1000;
+function finishTest(){
+  let typed=document.getElementById("input").value;
+  let words=typed.trim().split(" ").length;
+  let wpm=words;
 
-  let typedText = document.getElementById("input").value;
-  let wordCount = typedText.split(" ").length;
-  let speed = Math.round((wordCount/totalTime)*60);
+  let correct=0;
+  for(let i=0;i<typed.length;i++){
+    if(typed[i]===currentText[i]) correct++;
+  }
 
-  document.getElementById("result").innerText =
-    "Your speed: " + speed + " WPM";
+  let accuracy=Math.round((correct/currentText.length)*100);
+
+  document.getElementById("result").innerText=
+  `WPM: ${wpm} | Accuracy: ${accuracy}%`;
 }
 </script>
-
 </body>
 </html>

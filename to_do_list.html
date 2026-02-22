@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To Do App</title>
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.container {
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  width:350px;
+}
+input {
+  width:70%;
+  padding:8px;
+}
+button {
+  padding:8px;
+  cursor:pointer;
+}
+li {
+  margin-top:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>To Do List</h2>
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <button onclick="addTask()">Add</button>
+  <ul id="taskList"></ul>
+</div>
+
+<script>
+function addTask() {
+  let input = document.getElementById("taskInput");
+  if(input.value==="") return;
+
+  let li = document.createElement("li");
+  li.textContent = input.value;
+
+  li.onclick = function() {
+    li.style.textDecoration = "line-through";
+  };
+
+  document.getElementById("taskList").appendChild(li);
+  input.value="";
+}
+</script>
+
+</body>
+</html>

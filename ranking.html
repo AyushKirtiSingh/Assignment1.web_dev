@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 15 Strongest Lookism Fighters</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#000000);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
+  color:white;
+  padding:40px 20px;
+}
+
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+h1{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:38px;
+  letter-spacing:2px;
+  text-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  padding:25px;
+  cursor:pointer;
+  transition:0.4s;
+  box-shadow:0 15px 25px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.04);
+  background:rgba(255,255,255,0.15);
+}
+
+.rank{
+  font-size:13px;
+  opacity:0.6;
+}
+
+.name{
+  font-size:20px;
+  margin:8px 0 15px;
+}
+
+.power-bar{
+  background:rgba(255,255,255,0.1);
+  height:8px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.power-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#ff512f,#dd2476);
+  border-radius:10px;
+  transition:1s ease;
+}
+
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition:0.3s;
+}
+
+.modal.active{
+  visibility:visible;
+  opacity:1;
+}
+
+.modal-content{
+  background:#111;
+  padding:30px;
+  border-radius:15px;
+  width:90%;
+  max-width:450px;
+  text-align:center;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.skills{
+  margin-top:15px;
+  font-size:14px;
+  opacity:0.85;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Top 15 Strongest Lookism Fighters</h1>
+
+<div class="container" id="fighterContainer"></div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">✖</span>
+    <h2 id="modalName"></h2>
+    <div class="skills" id="modalSkills"></div>
+  </div>
+</div>
+
+<script>
+const fighters=[
+{rank:1,name:"James Lee",power:100,skills:"Peak strength, unmatched speed, combat genius."},
+{rank:2,name:"Gun Park",power:97,skills:"Master martial artist, insane durability."},
+{rank:3,name:"Goo Kim",power:95,skills:"Weapon mastery, tactical genius."},
+{rank:4,name:"Daniel Park (UI)",power:93,skills:"Ultra instinct state, copy ability."},
+{rank:5,name:"Tom Lee",power:91,skills:"Monster brute force and intimidation."},
+{rank:6,name:"Jake Kim",power:89,skills:"Street king leader, endurance master."},
+{rank:7,name:"Johan Seong",power:87,skills:"Copy fighter with extreme adaptability."},
+{rank:8,name:"Eli Jang",power:85,skills:"Agile assassin-style combat."},
+{rank:9,name:"Vasco",power:83,skills:"Explosive punches, heroic stamina."},
+{rank:10,name:"Samuel Seo",power:81,skills:"Savage aggression and resilience."},
+{rank:11,name:"Ryuhei Kuroda",power:79,skills:"Weapon-based combat, relentless pressure."},
+{rank:12,name:"Mandeok Bang",power:77,skills:"Heavy hitter with solid technique."},
+{rank:13,name:"Yuseong",power:75,skills:"Speed-based aggressive strikes."},
+{rank:14,name:"Warren Chae",power:73,skills:"Technical striker with discipline."},
+{rank:15,name:"Zack Lee",power:71,skills:"Boxing mastery and durability."}
+];
+
+const container=document.getElementById("fighterContainer");
+
+fighters.forEach((f,index)=>{
+  const card=document.createElement("div");
+  card.classList.add("card");
+  card.innerHTML=`
+    <div class="rank">Rank #${f.rank}</div>
+    <div class="name">${f.name}</div>
+    <div class="power-bar">
+       <div class="power-fill" style="width:${f.power}%"></div>
+    </div>
+  `;
+  card.onclick=()=>openModal(f);
+  container.appendChild(card);
+});
+
+function openModal(f){
+  document.getElementById("modalName").innerText=f.name;
+  document.getElementById("modalSkills").innerText=f.skills;
+  document.getElementById("modal").classList.add("active");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("active");
+}
+
+window.onclick=function(e){
+  if(e.target==document.getElementById("modal")){
+    closeModal();
+  }
+}
+</script>
+
+</body>
+</html>
